@@ -126,3 +126,45 @@ class ExtendedNet(torch.nn.Module):
     def forward(self, x):
         
         return self.net(x)
+
+
+
+
+
+# def gen_patch(image, x, y, ws = 11):
+#     """
+#     function to return a patch of size ws at a specific location of the image.
+#     x, y in this case is a top left corner of the patch, for example if x,y is (0,0)
+#     you should return a patch over (0,0) and (ws,ws)
+    
+#     For corner case, you can pad the output with zeros such that we always have 
+#     (channel, ws, ws) dimension output
+    
+#     Args:
+#     -   image: image of type Tensor with dimension (channel, width, height)
+#     -   x: x location in the image 
+#     -   y: y location in the image
+#     -   ws: window size or block size of the patch we want
+#     Returns:
+#     -   patch: a patch of size (channel, ws, ws) of type Tensor
+
+#     """
+#     ############################################################################
+#     # Student code begin
+#     ############################################################################
+    
+#     x = int(x)
+#     y = int(y)
+    
+#     patch = image[:,x:x+ws,y:y+ws]
+    
+#     if patch.shape[1] != ws or patch.shape[2] != ws:
+#       padded_patch = torch.zeros(image.shape[0],ws,ws)
+#       padded_patch[:, :patch.shape[1], :patch.shape[2]] = patch
+#       patch = padded_patch
+    
+#     return patch
+  
+#     ############################################################################
+#     # Student code end
+#     ############################################################################
