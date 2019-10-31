@@ -43,7 +43,30 @@ class MCNET(torch.nn.Module):
             ############################################################################
             # Student code begin
             ############################################################################
-
+            
+            # num_conv_layers: 5
+            nn.Conv2d(1, num_feature_map, kernel_size=kernel_size, stride=1, padding=(kernel_size//2)),
+            nn.ReLU(),
+            nn.Conv2d(num_feature_map, num_feature_map, kernel_size=kernel_size, stride=1, padding=(kernel_size//2)),
+            nn.ReLU(),
+            nn.Conv2d(num_feature_map, num_feature_map, kernel_size=kernel_size, stride=1, padding=(kernel_size//2)),
+            nn.ReLU(),
+            nn.Conv2d(num_feature_map, num_feature_map, kernel_size=kernel_size, stride=1, padding=(kernel_size//2)),
+            nn.ReLU(),
+            nn.Conv2d(num_feature_map, num_feature_map, kernel_size=kernel_size, stride=1, padding=(kernel_size//2)),
+            nn.ReLU(),
+            
+            # concatenate
+            Reshape((batch_size, ws**2 * num_feature_map * 2)),
+            
+            # num_fc_layers: 3
+            nn.Linear(ws**2 * num_feature_map * 2,num_hidden_unit),
+            nn.ReLU(),
+            nn.Linear(num_hidden_unit,num_hidden_unit),
+            nn.ReLU(),
+            nn.Linear(num_hidden_unit,1),
+            nn.Sigmoid()
+            
             ############################################################################
             # Student code end
             ############################################################################
