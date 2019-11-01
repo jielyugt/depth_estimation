@@ -112,6 +112,10 @@ class ExtendedNet(torch.nn.Module):
             # Student code begin
             ############################################################################
             
+            # needs debugging
+            
+            *(list(orig_model.children())[:-1] + list(orig_model.children())[-2] + list(orig_model.children())[-1])
+
             ############################################################################
             # Student code end
             ############################################################################
