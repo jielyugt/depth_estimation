@@ -114,7 +114,11 @@ class ExtendedNet(torch.nn.Module):
             
             # needs debugging
             
-            *(list(orig_model.children())[:-1] + list(orig_model.children())[-2] + list(orig_model.children())[-1])
+            *list(orig_model.children())[0][:-2],
+            nn.Linear(new_layer_size, new_layer_size),
+            nn.ReLU(),
+            nn.Linear(new_layer_size,1),
+            nn.Sigmoid()
 
             ############################################################################
             # Student code end
